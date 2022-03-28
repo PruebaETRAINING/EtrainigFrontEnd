@@ -1,0 +1,46 @@
+<div class="Cabecera">
+   
+</div>
+
+<section class="Formulario">
+   
+    <div class="titulo">
+        <h1>Registrar nuevo curso</h1>
+    </div>
+    
+   <div class="inputs">
+        
+
+         <form class="nombre">
+             <mat-form-field class="nombre-input" appearance="fill">
+             <mat-label>Nombre:</mat-label>
+             <input matInput placeholder="Ej. Nombre de curso"  [(ngModel)]="newCurso.nombre" name="nombre">
+             </mat-form-field>
+         </form>
+
+    
+        <mat-form-field class="example-full-width" appearance="fill">
+             <mat-label>Fecha de inicio curso</mat-label>
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="newCurso.fechaInicioCurso">
+             <mat-datepicker-toggle matSuffix [for]="picker1">
+             <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+             </mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="finCurso" appearance="fill">
+            <mat-label>Fecha de fin curso</mat-label>
+           <input matInput [matDatepicker]="picker2" [(ngModel)]="newCurso.fechaFinCurso">
+            <mat-datepicker-toggle matSuffix [for]="picker2">
+            <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+           <mat-datepicker #picker2></mat-datepicker>
+       </mat-form-field>
+
+
+    <button mat-flat-button color="primary" [routerLink]="['/home']" [style]="{'margin':'1%'}">Atras</button>
+    <button mat-flat-button color="primary" (click)="crearCurso()" [routerLink]="['/home']" [style]="{'margin':'1%'}" >Registrar</button>
+
+
+    </div>
+</section>

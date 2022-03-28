@@ -1,0 +1,46 @@
+<div>
+    <button mat-flat-button color="primary" [style]="{'margin':'1%'}" [routerLink]="['/crearCurso']" >Nuevo curso</button>
+    <button mat-flat-button color="primary" [style]="{'margin':'1%'}" (click)="cargar()">Cargar</button>
+    </div>
+    <div>
+        <mat-form-field appearance="standard">
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Jhon" #input>
+        </mat-form-field>
+    
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+           
+        <ng-container matColumnDef="id">
+             <th mat-header-cell *matHeaderCellDef> id </th>
+            <td mat-cell *matCellDef="let element" > {{element.id}}
+         </ng-container>
+        
+         <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element" > {{element.nombre}}
+        </ng-container>
+      
+        <ng-container matColumnDef="fechaInicioCurso">
+            <th mat-header-cell *matHeaderCellDef> Fecha Inicio Curso: </th>
+            <td mat-cell *matCellDef="let element"> {{element.fechaInicioCurso | date}} </td>
+          </ng-container>
+    
+    
+        <ng-container matColumnDef="fechaFinCurso">
+          <th mat-header-cell *matHeaderCellDef> Fecha Fin Curso </th>
+          <td mat-cell *matCellDef="let element; let i = index"> {{element.fechaFinCurso | date}}
+            <button mat-fab color="primary" (click)="getCurso(i)" [routerLink]="['/editarCurso']" aria-label="Example icon button with a delete icon">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-fab color="warn" (click)="getCurso(i)" (click)="eliminarCurso()" (click)="cargar()" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+     </table>
+    
+    </div>
